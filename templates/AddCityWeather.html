@@ -1,0 +1,28 @@
+
+
+
+<div class="container" >
+  <div class="panel panel-default"  >
+        <div class="panel-heading">
+          <h4 class="panel-title">Add Station</h4>
+        </div>
+        <div class="panel-body">
+          <form  name="cityWeatherForm">
+            <div class="form-group">
+              <label for="cityName">City Name</label>
+              <input name="cityName"  placeholder="bern,ch" ng-model="cityName"/>
+            </div>
+            <div class="form-group">
+              <label for="OWAPIKEY">OpenWeathermap.org API Key</label>
+              <input name="OWAPIKEY"  placeholder="http://openweathermap.org" ng-model="OWAPIKEY"/>
+              <a href="http://openweathermap.org/appid">get your own API Key</a>
+            </div>
+            <br/>
+            <div class="form-group">
+              <button class="btn" ng-click="addWeather()">Add City forcast</button>
+            </div>
+          </form>
+        </div>
+  </div>
+  <div ng-include="'templates/boardlist.html'"></div>
+</div>

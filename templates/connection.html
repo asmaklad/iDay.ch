@@ -1,0 +1,85 @@
+<section style="padding-left: 0;padding-right: 0;width:100%" id="board">
+  <div role="tabpanel" class="tab-pane" id="{{connectionName}}">
+    <div class="panel panel-primary text-center">
+      <!-- Default panel contents -->
+      <div class="panel-heading">
+        <h4 class="display-5">
+          <i class="fa fa-random" aria-hidden="true"></i> {{connectionName}} {{currDateTime | amDateFormat:'HH:mm:ss'}}
+          <button type="button" ng-click="reverseConnection()" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off">
+          <i class="fa fa-backward" aria-hidden="true"></i>
+        </button>
+        </h4>
+      </div>
+      <div class="panel-body container-fluid">
+        <div class="table-responsive">
+          <table class="table table-condensed ">
+            <tr class="info text-center">
+              <th>IDX</th>
+              <th>Dep./Arr.</th>
+              <th>From</th>
+              <th>Duration</th>
+              <th>Trips</th>
+            </tr>
+            <tbody ng-repeat="x in fromToConnections.connections">
+              <div>
+                <tr class="success animated " ng-show="x | isFutureConnection" ng-class="{zoomOutRight: !(x | isFutureConnection) , zoomInLeft: (x | isFutureConnection) }">
+                  <td class="text-left">{{$index + 1}}</td>
+                  <td>
+                    <i class="fa fa-clock-o" aria-hidden="true"></i>{{x.from.departureTimestamp | amFromUnix | amDateFormat:'HH:mm'}}
+                    <br />
+                    <i class="fa fa-clock-o" aria-hidden="true"></i>{{x.to.arrivalTimestamp | amFromUnix | amDateFormat:'HH:mm'}}
+                    <br />
+                  </td>
+                  <td class="text-left">
+                    {{x.from.station.name}}<br />
+                    <div class="animated infinite" ng-class="{bounceIn: (x.from.departureTimestamp - moment(currDateTime).unix())<60}">
+                      <i class="fa fa-hourglass-half" aria-hidden="true"></i>
+                      <span class=" "  am-time-ago="x.from.departureTimestamp  | amFromUnix">
+                      </span>
+                    </div>
+
+                  </td>
+                  <td class="text-left">
+                    <i class="fa fa-hourglass-half" aria-hidden="true"></i> 
+                    <span ng-if="moment.unix(x.to.arrivalTimestamp-x.from.departureTimestamp).utc().format('DD')-1 >0" >
+                      ((moment.unix(x.to.arrivalTimestamp-x.from.departureTimestamp).utc().format("DD"))-1) D
+                    </span>
+                    {{moment.unix(x.to.arrivalTimestamp-x.from.departureTimestamp).utc().format("HH:mm")}}
+                  </td>
+                  <td>
+                    {{x.sections.length}}
+                  </td>
+                </tr>
+                <tr ng-class="{zoomOutLeft: !(x | isFutureConnection) , zoomInRight: (x | isFutureConnection)}" ng-repeat="y in x.sections"
+                  ng-show="x | isFutureConnection" class="animated">
+                  <td class="text-right">
+                    {{$index+1}}&nbsp;&nbsp;&nbsp;
+                  </td>
+                  <td class="text-left">
+                    {{y.journey.category +' '+ y.journey.number}} <br/> {{y.journey.operator}}
+                  </td>
+                  <td class="text-left">
+                    <i class="fa fa-shield fa-rotate-180 fa-fw" aria-hidden="true"></i>{{y.departure.station.name}}<br />
+                    <i class="fa fa-shield fa-flip-horizontal fa-fw" aria-hidden="true"></i>{{y.arrival.station.name}}
+                  </td>
+                  <td style="text-align:left">
+                    <span>{{y.departure.departure | amDateFormat:'dddd, HH:mm'}}</span> <br />
+                    <span>{{y.arrival.arrival | amDateFormat:'dddd, HH:mm'}}</span>
+                  </td>
+                  <!--td style="text-align:left">{{y.arrival.station.name}}</td-->
+                  <td style="text-align:left">
+                    <span>{{y.arrival.arrival | amDifference : y.departure.departure : 'minutes' }}'</span>
+                  </td>
+                </tr>
+              </div>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <!-- Panel Body -->
+      <div class="panel-footer  panel-primary">
+        Data fetched from transport.opendata.ch
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,50 @@
+<ul ng-repeat="x in MyBoards" >
+  <li ng-if="x.type == 'station'" >
+    <span>
+      <a href="#!station/{{x.stationName}}" >
+        <i class="fa fa-bus" aria-hidden="true"></i>
+        {{x.stationName}}
+        <span class="sr-only">(current)</span>
+      </a>
+      <span class="badge btn btn-success" data-ng-click="removeItem($index)" >
+        <i class="fa fa-trash" aria-hidden="true"></i>
+      </span>
+    </span>
+  </li>
+  <li ng-if="x.type == 'connection'">
+    <span>
+      <a  href="#!connection/{{x.from}}/{{x.to}}/{{x.connectionName}}" >
+        <i class="fa fa-random" aria-hidden="true"></i>
+        {{x.connectionName}}
+        <span class="sr-only">(current)</span>
+      </a>
+      <span class="badge btn btn-info" data-ng-click="removeItem($index)" >
+        <i class="fa fa-trash" aria-hidden="true"></i>
+      </span>
+    </span>
+  </li>
+  <li ng-if="x.type == 'weather'">
+    <span>
+      <a  href="#!weather/{{x.cityName}}" >
+        <i class="fa fa-umbrella" aria-hidden="true"></i>
+        {{x.cityName}}
+        <span class="sr-only">(current)</span>
+      </a>
+      <span class="badge btn btn-warning" data-ng-click="removeItem($index)" >
+        <i class="fa fa-trash" aria-hidden="true"></i>
+      </span>
+    </span>
+  </li>
+  <li ng-if="x.type == 'weatherstation'" >
+    <span>
+      <a  href="#!weatherstation/{{x.code}}" >
+        <i class="fa fa-cloud" aria-hidden="true"></i>
+        {{x.name}}
+        <span class="sr-only">(current)</span>
+      </a>
+      <span class="badge btn btn-danger" data-ng-click="removeItem($index)" >
+        <i class="fa fa-trash" aria-hidden="true"></i>
+      </span>
+    </span>
+  </li>
+</ul>

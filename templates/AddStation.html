@@ -1,0 +1,43 @@
+
+
+  <div class="panel panel-default"  >
+        <div class="panel-heading">
+          <h4 class="panel-title">Add Station</h4>
+        </div>
+        <div class="panel-body">
+          <form  name="searchStationNameForm">
+            <div class="form-group">
+              <label for="StationName1">Station Name</label>
+              <!--
+                md-search-text-change = "searchStationName(searchText)"
+                md-search-text-change = "transportOpendataChAPI.getStations(searchText)"
+                md-items="item in stationsQResult.stations"
+                ng-disabled = "isDisabled"
+                md-no-cache = "true"
+                md-min-length="1"
+                md-delay="500"
+              -->
+              <md-autocomplete
+                md-clear-button="true"
+                md-selected-item="selectedItem"
+                md-selected-item-change="addStation(item)"
+                md-items="item in transportOpendataChAPI.getStations(searchText)"
+                md-search-text="searchText"
+                md-item-text="item.name"
+                placeholder = "Stations?"
+                ng-model-options="{ debounce: 500 }"
+                >
+                <md-item-template>
+                  <span md-highlight-text = "searchText" md-highlight-flags = "^i">{{item.name}}</span>
+                </md-item-template>
+                <md-not-found>
+                    No Stations matching "{{searchText}}" were found.
+                </md-not-found>
+                <span>{{ item.name }}</span>
+              </md-autocomplete>
+            </div>
+          </form>
+        </div>
+        {{stationsQResult.stations | json}}
+  </div>
+  <div ng-include="'templates/boardlist.html'"></div>

@@ -1,0 +1,69 @@
+
+
+
+  <div class="panel panel-default" >
+        <div class="panel-heading">
+          <h4 class="panel-title panel-primary">Add Connection From->To</h4>
+        </div>
+        <div class="panel-body">
+          <div class="container">
+          <form class="form-horizontal" name="searchConnectionNameForm">
+            <div class="form-group" >
+              <label for="StationName1">From Station</label>
+              <!-- md-search-text-change = "searchStationName(searchTextFrom)" -->
+              <md-autocomplete
+                name="StationName1"
+                md-no-cache="true"
+                md-clear-button="true"
+                md-selected-item="selectedItemFrom"
+                md-selected-item-change=""
+                md-items="item in transportOpendataChAPI.getStations(searchTextFrom)"
+                md-search-text="searchTextFrom"
+                md-item-text="item.name"
+                md-min-length = "2"
+                placeholder = "Stations?"
+                >
+                <md-item-template>
+                  <span md-highlight-text = "ctrl.searchText" md-highlight-flags = "^i">{{item.name}}</span>
+                </md-item-template>
+                <span>{{ item.name }}</span>
+              </md-autocomplete>
+            </div>
+            <br/>
+            <div class="form-group">
+              <label for="StationName2">To Station</label>
+              <!-- md-search-text-change = "searchStationName(searchTextTo)"-->
+              <md-autocomplete
+                name="StationName2"
+                md-no-cache="true"
+                md-clear-button="true"
+                md-selected-item="selectedItemTo"
+                md-selected-item-change=""
+                md-items="item in transportOpendataChAPI.getStations(searchTextTo)"
+                md-search-text="searchTextTo"
+                md-item-text="item.name"
+                md-min-length = "2"
+                md-input-minlength ="2"
+                md-match-case-insensitive="true"
+                md-delay="500"
+                placeholder = "Stations?"
+                >
+                <md-item-template>
+                  <span md-highlight-text = "ctrl.searchText" md-highlight-flags = "^i">{{item.name}}</span>
+                </md-item-template>
+                <span>{{ item.name }}</span>
+              </md-autocomplete>
+            </div>
+            <br/>
+            <div class="form-group">
+              <label for="ConnectionName">Label your connection</label>
+              <input name="ConnectionName" ng-model="connectionName" type="text" placeholder="ToWork, ToHome, toSchool .." class="form-control input-lg" />
+              <span class="glyphicon glyphicon-remove form-control-feedback"></span>
+            </div>
+            <br/>
+            <button class="btn" ng-click="addConnection()">Add Connection</button>
+          </form>
+          </div>
+        </div>
+  </div>
+  <div ng-include="'templates/boardlist.html'"></div>

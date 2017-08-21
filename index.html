@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta content="UTF-8" charset="UTF-8" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <!--meta name="viewport" content="width=device-width,height=device-height,user-scalable:no,initial-scale=0.6, maximum-scale=1.0,minimum-scale=0.6," /-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="keywords" content="Trasportation & Weather Mashup for Swiss residents " />
+  <meta name="Auther" content="Ahmed Maklad" />
+  <!--meta http-equiv="refresh" content="3600" /-->
+  <meta name="License" content="Creative Commons license for non-commercial purposes" />
+  <meta name="classification" content="personal productivity,freeware,Switzerland,Swiss" />
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+  <title>iDay.ch(Beta)</title>
+  <!--link type="text/css" href="/css/ptcss.css" rel="stylesheet" /-->
+  <style>
+
+  </style>
+  <link rel = "stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" >
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <!-- Angular -->
+  <link rel = "stylesheet" href = "https://ajax.googleapis.com/ajax/libs/angular_material/1.1.4/angular-material.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-route.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-animate.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-resource.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-aria.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-messages.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.js"></script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-cookies.js"></script>
+
+  <!-- Latest compiled and minified CSS -->
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <!-- Optional theme -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha256-o8bM0Z5cFvrvvvQp0EJFi4LICvBA9FCx7iCNuojVsN8=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.2/css/bootstrap-responsive.min.css" integrity="sha256-lIFJvX0EbEpgbhha1orNrXaV1TKngfVWrIbwgcHl80E=" crossorigin="anonymous" />	
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-moment/1.0.1/angular-moment.min.js"></script>
+
+	<style>
+    .body{
+        width:100%;
+        height:100%;
+        display:block;
+        padding-left: 0;
+        padding-right: 0;
+    }
+    .table-condensed{
+  	  font-size: 14px;
+  	}
+    #head-navbar {
+      width: 100%;
+      white-space: nowrap;
+      display: inline-block;
+      overflow: hidden;
+    }
+    .nav>li {
+      display: inline-block;
+      white-space: nowrap;
+    }
+    .panel {
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+    @media (max-width: 978px) {
+      .container {
+        padding:0;
+        margin:0;
+      }
+
+      body {
+        width:100%;
+        height:100%;
+        display:block;
+        padding-left: 0;
+        padding-right: 0;
+        padding:0;
+        font-size: 1em;
+      }
+      #head-navbar {
+        white-space: normal;
+      }
+      .navbar-fixed-top, .navbar-fixed-bottom, .navbar-static-top {
+        margin-left: 0;
+        margin-right: 0;
+        margin-bottom:0;
+      }
+  }
+  </style>
+</head>
+
+<body>
+    <div id="App1" ng-app="infoApp1" style="padding-left: 0px;padding-right: 0px;width:100%;">
+      <div ng-controller="transportCtrl as ctrl" style="padding-left: 0;padding-right: 0;width:100%">
+        <div ng-include="'templates/navbar.html'"> </div>
+        <!---------------------------------------------->
+        <div ng-view></div>
+        <div ng-include="'templates/disclaimer.html'"> </div>
+      </div>
+      <!-- div transport controller-->
+    </div>
+    <!-- div app1-->
+
+  <script src="transportApp.js"></script>
+  <!-- -->
+</body>
+
+</html>

@@ -1,0 +1,58 @@
+<div role="tabpanel" class="tab-pane" id="{{cityName}}">
+	<div class="panel panel-warning text-center">
+	  <!-- Default panel contents -->
+	  <div class="panel-heading panel-primary">
+			<h4 class="display-4"><i class="fa fa-umbrella" aria-hidden="true"></i> {{weatherResponse.city.name+','+weatherResponse.city.country}}   {{currDateTime |  amDateFormat:'dddd YYYY.MM.DD HH:mm:ss'}}</h4>
+		</div>
+	  <div class="panel-body container-fluid">
+			<div class="table-responsive">
+      <table class="table table-striped">
+        <!--  -->
+        <tr>
+						<th class="text-center">
+							<i class="fa fa-bolt" aria-hidden="true"></i>
+							<i class="fa fa-sun-o" aria-hidden="true"></i> <br />
+							<i class="fa fa-umbrella" aria-hidden="true"></i>
+							<i class="fa fa-cloud" aria-hidden="true"></i>
+						</th>
+	          <th style="vertical-align: middle;">
+							<i class="fa fa-calendar" aria-hidden="true"></i>
+							Date
+						</th>
+	          <th class="text-center" style="vertical-align: middle;font-size:1.5em">&#x2103;</th>
+	          <th class="text-center">min<br />max</th>
+	          <th class="text-center">hPa<br />Hum.</th>
+						<th class="text-center">Wnd m/s<br />km/h</th>
+        </tr>
+        <tr ng-repeat="x in weatherResponse.list" ng-class="x.seperatorStyle">
+						<td style="vertical-align: middle; padding: 1px" >
+	            <img src="http://openweathermap.org/img/w/{{x.weather[0].icon}}.png" />
+	          </td>
+	          <td class="text-left">
+								{{x.weather[0].description }} <br />
+	              <span>{{x.dt  | amFromUnix  | amCalendar:referenceTime:formats}}</span> <br />
+								<div ng-if="x.seperatorStyle=='success'">
+									<span am-time-ago="x.dt  | amFromUnix | amParse:'YYYY.MM.DD HH:mm:ss'"></span>
+								</div>
+	          </td>
+	          <td style="vertical-align: middle;font-size:1.5em">{{x.main.temp | number:0}}&#176; </td>
+	          <!--td>{{x.weather[0].description }}</td-->
+	          <td style="vertical-align: middle;">{{x.main.temp_min | number:0}}&#176;  <br> {{x.main.temp_max | number:0}}&#176; </td>
+	          <!--td>{{x.weather[0].icon}}</td-->
+	          <td style="vertical-align: middle;">
+							{{x.main.pressure }}<br>
+				  		{{x.main.humidity}}%
+						</td>
+						<td style="vertical-align: middle;">
+							{{x.wind.speed | number:1}} m/s <br  />
+							{{x.wind.speed * (18/5)| number:0}} km/h
+						</td>
+        </tr>
+      </table>
+		</div>
+  </div> <!-- panel body -->
+	<div class="panel-footer  panel-primary">
+		Data fetched from api.openweathermap.org
+	</div>
+</div>
+</div>

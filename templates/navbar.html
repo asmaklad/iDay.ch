@@ -1,0 +1,95 @@
+
+<nav class="navbar navbar-default navbar-static-top">
+
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header navbar-left">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+              data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <i class="fa fa-bars" aria-hidden="true"></i>
+        <span class="sr-only">Toggle navigation</span>
+      </button>
+      <div class="dropdown navbar-brand">
+        <a  href="#" class="dropdown-toggle" data-toggle="dropdown"
+            role="button" aria-haspopup="true" aria-expanded="false">
+            <i class="fa fa-plus" aria-hidden="true"></i>
+            Add
+            <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu">
+          <li><a href="#!/AddStation"><i class="fa fa-bus" aria-hidden="true"></i> Station Board</a></li>
+          <li><a href="#!/AddConnection"><i class="fa fa-random" aria-hidden="true"></i> Connection Board</a></li>
+          <li role="separator" class="divider"></li>
+          <li><a href="#!/AddWeatherStation"><i class="fa fa-cloud" aria-hidden="true"></i> Swiss Weather Station</a></li>
+          <li><a href="#!/AddCityWeather"><i class="fa fa-umbrella" aria-hidden="true"></i> City Forecast</a></li>
+          <li role="separator" class="divider"></li>
+          <li><a href="#!/About"><i class="fa fa-question" aria-hidden="true"></i> About this site</a></li>
+          <li><a href="#!/HowToUse"><i class="fa fa-book" aria-hidden="true"></i> How to use this site</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul ng-repeat="x in MyBoards" class="nav navbar-nav ">
+        <li ng-if="x.type == 'station'"  class="navbar-brand">
+          <span>
+            <a href="#!station/{{x.stationName}}" >
+              <i class="fa fa-bus" aria-hidden="true"></i>
+              {{x.stationName}}
+              <span class="sr-only">(current)</span>
+            </a>
+            <span class="badge btn btn-success" data-ng-click="removeItem($index)" >
+              <i class="fa fa-trash" aria-hidden="true"></i>
+            </span>
+          </span>
+        </li>
+        <li ng-if="x.type == 'connection'" class="navbar-brand">
+          <span>
+            <a  href="#!connection/{{x.from}}/{{x.to}}/{{x.connectionName}}" >
+              <i class="fa fa-random" aria-hidden="true"></i>
+              {{x.connectionName}}
+              <span class="sr-only">(current)</span>
+            </a>
+            <span class="badge btn btn-info" data-ng-click="removeItem($index)" >
+              <i class="fa fa-trash" aria-hidden="true"></i>
+            </span>
+          </span>
+        </li>
+        <li ng-if="x.type == 'weather'" class="navbar-brand">
+          <span>
+            <a  href="#!weather/{{x.cityName}}" >
+              <i class="fa fa-umbrella" aria-hidden="true"></i>
+              {{x.cityName}}
+              <span class="sr-only">(current)</span>
+            </a>
+            <span class="badge btn btn-warning" data-ng-click="removeItem($index)" >
+              <i class="fa fa-trash" aria-hidden="true"></i>
+            </span>
+          </span>
+        </li>
+        <li ng-if="x.type == 'weatherstation'" class="navbar-brand">
+          <span>
+            <a  href="#!weatherstation/{{x.code}}" >
+              <i class="fa fa-cloud" aria-hidden="true"></i>
+              {{x.name}}
+              <span class="sr-only">(current)</span>
+            </a>
+            <span class="badge btn btn-danger" data-ng-click="removeItem($index)" >
+              <i class="fa fa-trash" aria-hidden="true"></i>
+            </span>
+          </span>
+        </li>
+      </ul>
+      <!--ul class="nav navbar-nav navbar-right">
+        <a class="navbar-nav" href="#">MyMashup</a>
+      </ul-->
+      <!--form class="navbar-form navbar-left" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search">
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+      </form-->
+    </div>
+    <!-- /.navbar-collapse -->
+
+</nav>

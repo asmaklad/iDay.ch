@@ -1,0 +1,40 @@
+
+
+  <div class="panel panel-default"  >
+        <div class="panel-heading">
+          <h4 class="panel-title">Add a Swiss Weather Station</h4>
+        </div>
+        <div class="panel-body">
+          Availbale Stations: {{weatherStations.length}}<br/>
+        	Matches : {{matches.length}}
+          <form  name="searchStationNameForm">
+            <div class="form-group">
+              <label for="StationName1">Station Name</label>
+              <md-autocomplete
+                  ng-disabled = "isDisabled"
+                  md-no-cache = "ctrl.noCache"
+                  md-clear-button="true"
+                  md-selected-item = "selectedWeatherStation"
+                  md-search-text-change   = "searchTextWeatherStationChange(searchTextWeatherStation)"
+                  md-search-text = "searchTextWeatherStation"
+                  md-selected-item-change = "selectedWeatherStationChange(item)"
+                  md-items = "item in matches"
+                  md-item-text = "item.station.name"
+                  md-min-length = "1"
+                  placeholder = "Weather Station?">
+
+                  <md-item-template>
+                     <span md-highlight-text = "searchTextWeatherStation"
+                        md-highlight-flags = "^i">{{item.station.name}}</span>
+                  </md-item-template>
+
+                  <md-not-found>
+                     No states matching "{{searchTextWeatherStation}}" were found.
+                  </md-not-found>
+               </md-autocomplete>
+            </div>
+          </form>
+        </div>
+  </div>
+
+  <div ng-include="'templates/boardlist.html'"></div>

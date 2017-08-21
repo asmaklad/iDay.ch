@@ -1,0 +1,133 @@
+<div role="tabpanel" class="tab-pane" id="{{cityName}}">
+	<div class="panel panel-danger text-center">
+	  <!-- Default panel contents -->
+	  <div class="panel-heading panel-primary">
+			<h4 class="display-4">
+        <i class="fa fa-cloud" aria-hidden="true"></i>
+        {{weatherStationResponse.station.name}} {{weatherstationCode}}  {{currDateTime |  amDateFormat:'dddd YYYY.MM.DD HH:mm:ss'}}
+      </h4>
+		</div>
+	  <div class="panel-body container-fluid">
+			<div class="table-responsive">
+      <table class="table table-striped">
+        <!--  -->
+        <tr>
+						<th class="text-left">
+							  Temperature
+						</th>
+	          <td class="text-center" style="vertical-align: middle;font-size:3em">
+              {{weatherStationResponse.temperature}} &#x2103;
+            </td>
+        </tr>
+        <tr>
+						<th class="text-left">
+							  Humidity
+						</th>
+	          <td class="text-center" style="vertical-align: middle;font-size:1.5em">
+              {{weatherStationResponse.humidity+' %'}}
+            </td>
+        </tr>
+        <tr>
+						<th class="text-left">
+							  WindSpeed
+						</th>
+	          <td class="text-center" style="vertical-align: middle;font-size:1.5em">
+              {{weatherStationResponse.windSpeed  | number:0}} km/h
+            </td>
+        </tr>
+        <tr>
+						<th class="text-left">
+							  qnhPressure
+						</th>
+	          <td class="text-center" style="vertical-align: middle;font-size:1.5em">
+                {{weatherStationResponse.qnhPressure}}
+            </td>
+        </tr>
+        <tr>
+						<th class="text-left">
+							  Reading dateTime (UTC)
+						</th>
+	          <td class="text-center" style="vertical-align: middle;font-size:1.5em">
+              {{weatherStationResponse.dateTime }}
+            </td>
+        </tr>
+        <tr>
+						<th class="text-left">
+							  Latitude
+						</th>
+	          <td class="text-center" style="vertical-align: middle;font-size:1.5em">
+                {{weatherStationResponse.station.lat}}
+            </td>
+        </tr>
+        <tr>
+						<th class="text-left">
+							  Longitude
+						</th>
+	          <td class="text-center" style="vertical-align: middle;font-size:1.5em">
+                {{weatherStationResponse.station.lng}}
+            </td>
+        </tr>
+        <tr>
+						<th class="text-left">
+							  Elevation
+						</th>
+	          <td class="text-center" style="vertical-align: middle;font-size:1.5em">
+                {{weatherStationResponse.station.elevation}}
+            </td>
+        </tr>
+        <tr>
+						<th class="text-left">
+							  Sunshine
+						</th>
+	          <td class="text-center" style="vertical-align: middle;font-size:1.5em">
+              {{weatherStationResponse.sunshine}}
+            </td>
+        </tr>
+        <tr>
+						<th class="text-left">
+							  WindDirection
+						</th>
+	          <td class="text-center" style="vertical-align: middle;font-size:1.5em">
+              {{weatherStationResponse.windDirection}} &#176; <i class="fa fa-compass" aria-hidden="true"></i>
+            </td>
+        </tr>
+        <tr>
+						<th class="text-left">
+							  precipitation
+						</th>
+	          <td class="text-center" style="vertical-align: middle;font-size:1.5em">
+                {{weatherStationResponse.precipitation}}
+            </td>
+        </tr>
+        <tr>
+						<th class="text-left">
+							  gustPeak
+						</th>
+	          <td class="text-center" style="vertical-align: middle;font-size:1.5em">
+                {{weatherStationResponse.gustPeak}}
+            </td>
+        </tr>
+        <tr>
+						<th class="text-left">
+							  qffPressure
+						</th>
+	          <td class="text-center" style="vertical-align: middle;font-size:1.5em">
+                {{weatherStationResponse.qffPressure}}
+            </td>
+        </tr>
+        <tr>
+						<th class="text-left">
+							  qfePressure
+						</th>
+	          <td class="text-center" style="vertical-align: middle;font-size:1.5em">
+                {{weatherStationResponse.qfePressure}}
+            </td>
+        </tr>
+      </table>
+		</div>
+  </div> <!-- panel body -->
+	<div class="panel-footer  panel-primary">
+		Data fetched from opendata.netcetera.com
+	</div>
+</div>
+</div>
