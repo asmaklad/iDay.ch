@@ -6,6 +6,7 @@ infoApp1.config(function ($locationProvider, $routeProvider) {
 		//.when("/",{templateUrl:"index.php"})
 		//.when("/", { redirectTo: '/'+$cookies.get('LastVisitURL') })
 		.when("/", { title: 'Last Vistited' ,templateUrl: 'templates/login.html', controller: "loginController" })
+		.when("/homescreen", { title: 'Home Screen Launcher' ,templateUrl: 'templates/login.html', controller: "loginController" })
 		.when("/station/:stationName", { title: 'Station Board' ,templateUrl: 'templates/station.html', controller: "stationCtrl" })
 		.when("/connection/:fromStation/:toStation/:connectionName", { title: 'Connection Borad' ,templateUrl: "templates/connection.html", controller: "connectionCtrl" })
 		.when("/weather/:cityName", { title: 'Weather Forecast' ,templateUrl: 'templates/weather.html', controller: "weatherCtrl" })
