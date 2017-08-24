@@ -6,11 +6,11 @@
           <h4 class="panel-title panel-primary">Add Connection From->To</h4>
         </div>
         <div class="panel-body">
-          <div class="container">
-          <form class="form-horizontal" name="searchConnectionNameForm">
+          <!--div class="container" class="form-horizontal"-->          
+          <form name="searchConnectionNameForm">
+
             <div class="form-group" >
-              <label for="StationName1">From Station</label>
-              <!-- md-search-text-change = "searchStationName(searchTextFrom)" -->
+              <label for="StationName1">From Station</label>              
               <md-autocomplete
                 name="StationName1"
                 md-no-cache="true"
@@ -29,10 +29,11 @@
                 <span>{{ item.name }}</span>
               </md-autocomplete>
             </div>
+
             <br/>
+
             <div class="form-group">
-              <label for="StationName2">To Station</label>
-              <!-- md-search-text-change = "searchStationName(searchTextTo)"-->
+              <label for="StationName2">To Station</label>              
               <md-autocomplete
                 name="StationName2"
                 md-no-cache="true"
@@ -54,16 +55,20 @@
                 <span>{{ item.name }}</span>
               </md-autocomplete>
             </div>
+
             <br/>
+
             <div class="form-group">
               <label for="ConnectionName">Label your connection</label>
               <input name="ConnectionName" ng-model="connectionName" type="text" placeholder="ToWork, ToHome, toSchool .." class="form-control input-lg" />
               <span class="glyphicon glyphicon-remove form-control-feedback"></span>
             </div>
+
             <br/>
+            
             <button class="btn" ng-click="addConnection()">Add Connection</button>
           </form>
-          </div>
+          <!--/div-->
         </div>
   </div>
   <div ng-include="'templates/boardlist.html'"></div>
