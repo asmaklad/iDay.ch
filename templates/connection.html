@@ -42,9 +42,9 @@
                   <td class="text-left">
                     <i class="fa fa-hourglass-half" aria-hidden="true"></i> 
                     <span ng-if="moment.unix(x.to.arrivalTimestamp-x.from.departureTimestamp).utc().format('DD')-1 >0" >
-                      ((moment.unix(x.to.arrivalTimestamp-x.from.departureTimestamp).utc().format("DD"))-1) D
+                      ((moment.unix(x.to.arrivalTimestamp-x.from.departureTimestamp).format("DD"))-1) D
                     </span>
-                    {{moment.unix(x.to.arrivalTimestamp-x.from.departureTimestamp).utc().format("HH:mm")}}
+                    {{moment.unix(x.to.arrivalTimestamp-x.from.departureTimestamp).format("HH:mm")}}
                   </td>
                   <td>
                     {{x.sections.length}}
